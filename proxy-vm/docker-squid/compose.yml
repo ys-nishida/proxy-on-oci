@@ -1,0 +1,11 @@
+services:
+  proxy:
+    image: ubuntu/squid:latest
+    environment:
+      TZ: Asia/Tokyo
+    volumes:
+      - ./conf/squid.conf:/etc/squid/squid.conf
+      - ./conf/whitelist:/etc/squid/whitelist:ro
+      # - ./logs:/var/log/squid # debug用
+    ports:
+      - "10080:3128"
